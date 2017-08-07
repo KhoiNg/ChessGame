@@ -11,14 +11,14 @@ namespace WindowGameChess.Class
         private int x;
         public int X
         {
-            get { return X; }
-            set { X = value; }
+            get { return x; }
+            set { x = value; }
         }
         private int y;
         public int Y
         {
-            get { return Y; }
-            set { Y = value; }
+            get { return y; }
+            set { y = value; }
         }
 
         private bool eat = false; 

@@ -23,6 +23,7 @@ namespace WindowGameChess
             InitializeComponent();
             ChessBoard = new Class.ChessBoardManager(PictureChess);
             ChessBoard.DrawChessBoard();
+            ChessBoard.CreateMapChessPosition();
         }
         
     }

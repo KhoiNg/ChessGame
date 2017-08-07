@@ -56,10 +56,10 @@
     <Compile Include="Class\ChessPiece.cs" />
     <Compile Include="Class\ChessPosition.cs" />
     <Compile Include="Class\Enumorators.cs" />
-    <Compile Include="Class\Moving.cs" />
     <Compile Include="Class\PieceClass\Bishop.cs" />
     <Compile Include="Class\PieceClass\King.cs" />
     <Compile Include="Class\PieceClass\Knight.cs" />
+    <Compile Include="Class\PieceClass\None.cs" />
     <Compile Include="Class\PieceClass\Pawn.cs" />
     <Compile Include="Class\PieceClass\Queen.cs" />
     <Compile Include="Class\PieceClass\Rook.cs" />

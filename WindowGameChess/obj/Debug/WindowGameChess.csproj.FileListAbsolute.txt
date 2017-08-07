@@ -7,3 +7,12 @@ c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameCh
 c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.exe
 c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.pdb
 C:\Users\User\Documents\Visual Studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.FormChess.resources
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\bin\Debug\WindowGameChess.exe.config
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\bin\Debug\WindowGameChess.exe
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\bin\Debug\WindowGameChess.pdb
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\obj\Debug\WindowGameChess.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\obj\Debug\WindowGameChess.FormChess.resources
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\obj\Debug\WindowGameChess.Properties.Resources.resources
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\obj\Debug\WindowGameChess.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\obj\Debug\WindowGameChess.exe
+C:\Users\User\Desktop\WindowGameChesstestgood\WindowGameChess\obj\Debug\WindowGameChess.pdb

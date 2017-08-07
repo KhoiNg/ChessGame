@@ -69,10 +69,19 @@
     <Compile Include="FormChess.Designer.cs">
       <DependentUpon>FormChess.cs</DependentUpon>
     </Compile>
+    <Compile Include="PawnUnderPromotion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PawnUnderPromotion.Designer.cs">
+      <DependentUpon>PawnUnderPromotion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormChess.resx">
       <DependentUpon>FormChess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PawnUnderPromotion.resx">
+      <DependentUpon>PawnUnderPromotion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

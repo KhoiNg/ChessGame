@@ -12,23 +12,17 @@ namespace WindowGameChess.Class.PieceClass
         {
             base.ChessType = ChessEnum.Queen;
             base.Color = color;
-            //CalculateMoves();
         }
-
-        public override List<ChessPosition> CalculateMoves()
+        public override List<ChessPosition> ListCanMove(ChessPosition pos_start, ChessPiece[,] Map_Chess)
         {
-            availableMoves = new List<ChessPosition>();
+            List<ChessPosition> list = new List<ChessPosition>();
+            list.AddRange(Diagonal(pos_start, Map_Chess));
+            list.AddRange(Vertical(pos_start, Map_Chess));
+            list.AddRange(Horizontal(pos_start, Map_Chess));
 
-            GetMovementArray(MaxDistance, Direction.FORWARD);
-            GetMovementArray(MaxDistance, Direction.BACKWARD);
-            GetMovementArray(MaxDistance, Direction.RIGHT);
-            GetMovementArray(MaxDistance, Direction.LEFT);
-            GetDiagnalMovementArray(MaxDistance, DiagnalDirection.FORWARD_LEFT);
-            GetDiagnalMovementArray(MaxDistance, DiagnalDirection.FORWARD_RIGHT);
-            GetDiagnalMovementArray(MaxDistance, DiagnalDirection.BACKWARD_LEFT);
-            GetDiagnalMovementArray(MaxDistance, DiagnalDirection.BACKWARD_RIGHT);
-            return availableMoves;
+            return list;
         }
+
 
     }
 }

@@ -12,25 +12,22 @@ namespace WindowGameChess.Class.PieceClass
         {
             base.ChessType = ChessEnum.Rook;
             base.Color = color;
-            this.canCastle = true;
-            //CalculateMoves();
+            //this.canCastle = true;
         }
-        public Rook(ChessColor color, bool castle)
-        {
-            base.ChessType = ChessEnum.Rook;
-            base.Color = color;
-            this.canCastle = castle;
-            //CalculateMoves();
-        }
+        //public Rook(ChessColor color, bool castle)
+        //{
+        //    base.ChessType = ChessEnum.Rook;
+        //    base.Color = color;
+        //    this.canCastle = castle;
+        //}
 
-        public override List<ChessPosition> CalculateMoves()
+        public override List<ChessPosition> ListCanMove(ChessPosition pos_start, ChessPiece[,] Map_Chess)
         {
-            availableMoves = new List<ChessPosition>();
-            GetMovementArray(MaxDistance, Direction.FORWARD);
-            GetMovementArray(MaxDistance, Direction.BACKWARD);
-            GetMovementArray(MaxDistance, Direction.RIGHT);
-            GetMovementArray(MaxDistance, Direction.LEFT);
-            return availableAttack;
+            List<ChessPosition> list = new List<ChessPosition>();
+            list.AddRange(Vertical(pos_start, Map_Chess));
+            list.AddRange(Horizontal(pos_start, Map_Chess));
+
+            return list;
         }
-    }
+    }  
 }

@@ -25,7 +25,7 @@ namespace WindowGameChess.Class
         public bool Eat
         {
             get { return eat; }
-            set { Eat = value; }
+            set { eat = value; }
         }
 
 

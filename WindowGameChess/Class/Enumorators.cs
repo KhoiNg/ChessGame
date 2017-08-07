@@ -22,20 +22,4 @@ namespace WindowGameChess.Class
         Black = -1,
         Die = 0
     }
-
-    public enum Direction
-    {
-        FORWARD,
-        BACKWARD,
-        LEFT,
-        RIGHT
-    }
-
-    public enum DiagnalDirection
-    {
-        FORWARD_LEFT,
-        FORWARD_RIGHT,
-        BACKWARD_LEFT,
-        BACKWARD_RIGHT
-    }
 }

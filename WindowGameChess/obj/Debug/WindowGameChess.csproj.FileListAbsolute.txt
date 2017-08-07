@@ -1,0 +1,9 @@
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.Properties.Resources.resources
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\bin\Debug\WindowGameChess.exe.config
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\bin\Debug\WindowGameChess.exe
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\bin\Debug\WindowGameChess.pdb
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.exe
+c:\users\user\documents\visual studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.pdb
+C:\Users\User\Documents\Visual Studio 2017\Projects\WindowGameChess\WindowGameChess\obj\Debug\WindowGameChess.FormChess.resources

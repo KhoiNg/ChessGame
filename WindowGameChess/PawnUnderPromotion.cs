@@ -13,7 +13,8 @@ namespace WindowGameChess
     public partial class PawnUnderPromotion : Form
     {
         public Class.ChessEnum chess = Class.ChessEnum.Pawn;
-        Class.ChessColor color = Class.ChessColor.Die;
+        public Class.ChessColor color = Class.ChessColor.Die;
+
         public PawnUnderPromotion(Class.ChessColor color)
         {
             InitializeComponent();

@@ -11,54 +11,54 @@ namespace WindowGameChess.Class
     public class ChessBoardManager
     {
         #region Properties
-        protected static string FolderImage = Application.StartupPath + "\\Resources\\";
+        // For the use of function
+        public static int[,] chessdie = new int[5, 2];
+        private static string FolderImage = Application.StartupPath + "\\Resources\\";
+        public ChessEnum[] array_ChessEnum = { ChessEnum.Rook, ChessEnum.Knight, ChessEnum.Bishop, ChessEnum.Queen, ChessEnum.King, ChessEnum.Bishop, ChessEnum.Knight, ChessEnum.Rook };
+        public ChessColor round = ChessColor.White;
         public static Color DefaultColor = Color.BurlyWood;
         public static Color canmove_color = Color.Fuchsia;
         int ChessEdge = 57;
-        public ChessEnum[] array_ChessEnum = { ChessEnum.Rook, ChessEnum.Knight, ChessEnum.Bishop, ChessEnum.Queen, ChessEnum.King, ChessEnum.Bishop, ChessEnum.Knight, ChessEnum.Rook };
-        public ChessColor round = ChessColor.White;
         public bool isMove = false;
         public int index_control = -1;
-        
 
-        public Point temp_p;
-        PictureBox temp_pic = new PictureBox();
-        List<ChessPosition> listcanmove = new List<ChessPosition>();
-        List<PictureBox> listchess = new List<PictureBox>();
-        List<PictureBox> listBackground = new List<PictureBox>();
+        private Point temp_p;
+        private PictureBox temp_pic = new PictureBox();
+        private List<ChessPosition> listcanmove = new List<ChessPosition>();
+        private List<PictureBox> listchess = new List<PictureBox>();
+        private List<PictureBox> listBackground = new List<PictureBox>();
 
-
-        private PictureBox chessBoard;
+        private PictureBox _chessBoard;
         public PictureBox ChessBoard
         {
-            get { return chessBoard; }
-            set { chessBoard = value; }
+            get { return _chessBoard; }
+            set { _chessBoard = value; }
         }
 
-        private ChessPiece[,] map_Chess = new ChessPiece[8, 8];
+        private ChessPiece[,] _map_Chess = new ChessPiece[8, 8];
         public ChessPiece[,] Map_Chess
         {
-            get { return map_Chess; }
-            set { map_Chess = value; }
+            get { return _map_Chess; }
+            set { _map_Chess = value; }
         }
 
-        private RichTextBox playerTurn;
+        private RichTextBox _playerTurn;
         public RichTextBox PlayerTurn
         {
-            get { return playerTurn; }
-            set { playerTurn = value; }
+            get { return _playerTurn; }
+            set { _playerTurn = value; }
         }
-        private RichTextBox movehistory;
+        private RichTextBox _movehistory;
         public RichTextBox Movehistory
         {
-            get { return movehistory; }
-            set { movehistory = value; }
+            get { return _movehistory; }
+            set { _movehistory = value; }
         }
-        private RichTextBox deathhistory;
+        private RichTextBox _deathhistory;
         public RichTextBox Deathhistory
         {
-            get { return deathhistory; }
-            set { deathhistory = value; }
+            get { return _deathhistory; }
+            set { _deathhistory = value; }
         }
         #endregion
 
@@ -70,15 +70,12 @@ namespace WindowGameChess.Class
             this.Movehistory = movehistory;
             this.Deathhistory = deathhistory;
         }
-
-
         #endregion
 
-        #region Method
+        #region Begin
         public void DrawChessBoard()
         {
             for (int i = 0; i < 8; i++)
-            {
                 for (int j = 0; j < 8; j++)
                 {
                     PictureBox Pic = new PictureBox()
@@ -89,14 +86,11 @@ namespace WindowGameChess.Class
                         BorderStyle = BorderStyle.FixedSingle
                     };
                     Pic.BackColor = (i + j) % 2 == 0 ? Color.Gray : Color.DarkGray;
-
                     Pic.SendToBack();
                     listBackground.Add(Pic);
                     ChessBoard.Controls.Add(Pic);
                 }
-            }
         }
-        // ham nameof
         public void CreateMapChessPosition()
         {
             Map_Chess = new ChessPiece[8, 8];
@@ -150,7 +144,8 @@ namespace WindowGameChess.Class
                 }
             }
         }
-
+        #endregion
+        #region Manage
         private PictureBox LoadPic(ChessColor color, ChessEnum chess, Point point, bool CreateEvent = true)
         {
             PictureBox Pic = new PictureBox()
@@ -190,7 +185,6 @@ namespace WindowGameChess.Class
                     pic.BackColor = canmove_color;
                 }
             }
-            if (Map_Chess[pos_chess.X,pos_chess.Y].ChessType == ChessEnum.King) castlecondition();
         }
 
         private ChessPosition GetPosMapsChess(Point p)
@@ -237,7 +231,7 @@ namespace WindowGameChess.Class
             {
                 //if eat
                 foreach (PictureBox pic in listchess)
-                {                                           
+                {
                     if (pic.Location == pos)
                     {
                         pic.Visible = false;
@@ -245,7 +239,7 @@ namespace WindowGameChess.Class
                         ChessBoard.Controls.Remove(pic);
                         listchess.Remove(pic);
                         if (Map_Chess[pos.X / 57, pos.Y / 57].ChessType != ChessEnum.King)
-                            CheckPieceDie(Map_Chess[pos.X / 57,pos.Y / 57]);
+                            CheckPieceDie(Map_Chess[pos.X / 57, pos.Y / 57]);
                         break;
                     }
                 }
@@ -273,14 +267,12 @@ namespace WindowGameChess.Class
                             case ChessEnum.Knight: map = new PieceClass.Knight(Map_Chess[pos_map.X, pos_map.Y].Color); break;
                             case ChessEnum.Queen: map = new PieceClass.Queen(Map_Chess[pos_map.X, pos_map.Y].Color); break;
                         }
-                        //map = new PieceClass.nform.chess;
                         ((PictureBox)sender).Image = Image.FromFile(FolderImage + Map_Chess[pos_map.X, pos_map.Y].Color.ToString() + "\\" + nform.chess.ToString() + ".png");
                         ((PictureBox)sender).BringToFront();
                     }
                 }
                 //overwrite new pos
 
-                checkmoveforcastle(pos_map, map);
                 Map_Chess[pos_map_.X, pos_map_.Y] = map;
 
                 //clear old pos maps
@@ -338,6 +330,8 @@ namespace WindowGameChess.Class
         }
         #endregion
 
+        #region Additional Feature
+
         public void MakeNewRound()
         {
             for (int i = 0; i < listchess.Count; i++)
@@ -349,6 +343,10 @@ namespace WindowGameChess.Class
             CreateMapChessPosition();
             round = ChessColor.White;
             playerturn();
+            Deathhistory.Text = "Player 1 Death Piece \n";
+            Deathhistory.Text += "Pawn : 0, Rook : 0, Knight : 0, Bishop : 0 ,Queen : 0 \n";
+            Deathhistory.Text += "Player 2 Death Piece \n";
+            Deathhistory.Text += "Pawn : 0, Rook : 0, Knight : 0, Bishop : 0 ,Queen : 0 \n";
             Movehistory.Text = "";
         }
 
@@ -356,11 +354,11 @@ namespace WindowGameChess.Class
         {
             PlayerTurn.Text = round.Equals(ChessColor.White) ? "Player 1 - White side " : "Player 2 - Black side";
         }
-        public void reportmove(int firstx, int firsty, int x, int y, ChessPiece piece)
+        private void reportmove(int firstx, int firsty, int x, int y, ChessPiece piece)
         {
-            Movehistory.Text += piece.Color.ToString() + " " + piece.ChessType.ToString() + " : " + xtotext(firstx) +(8 - firsty) + " ==> " + xtotext(x) + (8 - y)  + "\n";
+            Movehistory.Text += piece.Color.ToString() + " " + piece.ChessType.ToString() + " : " + xtotext(firstx) + (8 - firsty) + " ==> " + xtotext(x) + (8 - y) + "\n";
         }
-        public char xtotext(int x)
+        private char xtotext(int x)
         {
             switch (x)
             {
@@ -375,10 +373,7 @@ namespace WindowGameChess.Class
             }
             return ' ';
         }
-
-        public static int[,] chessdie = new int[5, 2];
-
-        public void CheckPieceDie (ChessPiece piece)
+        private void CheckPieceDie(ChessPiece piece)
         {
             int i = -1, j = -1;
             switch (piece.ChessType)
@@ -396,178 +391,13 @@ namespace WindowGameChess.Class
                 case ChessColor.Black: j = 1; break;
                 default: break;
             }
-            MessageBox.Show(piece.ChessType.ToString());
             chessdie[i, j]++;
-            deathhistory.Text = "Player 1 Death Piece \n";
-            deathhistory.Text += "Pawn : " + chessdie[0, 0] + ", Rook : " + chessdie[1, 0] + ", Knight : " + chessdie[2, 0] + ", Bishop : " + chessdie[3, 0] + ",Queen : " + chessdie[4, 0] + "\n";
-            deathhistory.Text += "Player 2 Death Piece \n";
-            deathhistory.Text += "Pawn : " + chessdie[0, 1] + ", Rook : " + chessdie[1, 1] + ", Knight : " + chessdie[2, 1] + ", Bishop : " + chessdie[3, 1] + ",Queen : " + chessdie[4, 1] + "\n";
+            Deathhistory.Text = "Player 1 Death Piece \n";
+            Deathhistory.Text += "Pawn : " + chessdie[0, 0] + ", Rook : " + chessdie[1, 0] + ", Knight : " + chessdie[2, 0] + ", Bishop : " + chessdie[3, 0] + ",Queen : " + chessdie[4, 0] + "\n";
+            Deathhistory.Text += "Player 2 Death Piece \n";
+            Deathhistory.Text += "Pawn : " + chessdie[0, 1] + ", Rook : " + chessdie[1, 1] + ", Knight : " + chessdie[2, 1] + ", Bishop : " + chessdie[3, 1] + ",Queen : " + chessdie[4, 1] + "\n";
         }
+        #endregion
 
-        public static bool[,] castle = new bool[2, 2] { { false, false }, { false, false } };
-        public static bool[,] isrookmove = new bool[2, 2] { { false, false }, { false, false } };
-        public static bool[] iskingmove = new bool[2] { false, false };
-        public void checkmoveforcastle (ChessPosition position, ChessPiece piece)
-        {
-            if (piece.ChessType == ChessEnum.Rook)
-                if (piece.Color == ChessColor.White)
-                {
-                    if (position.X == 0 && position.Y == 7) isrookmove[0, 0] = true;
-                    if (position.X == 7 && position.Y == 7) isrookmove[0, 1] = true;
-                }
-                else if (piece.Color == ChessColor.Black)
-                {
-                    if (position.X == 0 && position.Y == 0) isrookmove[1, 0] = true;
-                    if (position.X == 7 && position.Y == 0) isrookmove[1, 1] = true;
-                }
-            if (piece.ChessType == ChessEnum.King)
-            {
-                MessageBox.Show(iskingmove[0].ToString());
-                if (piece.Color == ChessColor.White) iskingmove[0] = true;
-                else if (piece.Color == ChessColor.Black) iskingmove[1] = true;
-            }
-        }
-        public void castlecondition()
-        {
-            Form castleform = new Form() { Width = 200, Height = 200 };
-            int avai = 0;
-            if (round == ChessColor.White)
-            {
-                if (iskingmove[0]) { castle[0, 0] = false; castle[0, 1] = false; }
-                if (Map_Chess[1, 7].ChessType == ChessEnum.Empty && Map_Chess[2, 7].ChessType == ChessEnum.Empty
-                    && Map_Chess[3, 7].ChessType == ChessEnum.Empty && !isrookmove[0, 0] && !iskingmove[0])
-                    castle[0, 0] = true;
-                else castle[0, 0] = false;
-                if (Map_Chess[5, 7].ChessType == ChessEnum.Empty && Map_Chess[6, 7].ChessType == ChessEnum.Empty
-                   && !isrookmove[0, 1] && !iskingmove[0])
-                    castle[0, 1] = true;
-                else castle[0, 1] = false;
-                if (castle[0, 0])
-                {
-                    avai++;
-                    Button shortcastle = new Button() { Text = " You can Long Castle ", Width = 150, Location = new Point(30, 30) };
-                    shortcastle.Click += dolongcastle;
-                    shortcastle.MouseClick += (s, args) => castleform.Close();
-                    castleform.Controls.Add(shortcastle);
-                }
-                if (castle[0,1])
-                {
-                    avai++;
-                    Button longcastle = new Button() { Text = " You can Short Castle ", Width = 150, Location = new Point(30, 60) };
-                    longcastle.Click += doshortcastle;
-                    longcastle.MouseClick += (s, args) => castleform.Close();
-                    castleform.Controls.Add(longcastle);
-                }
-                if (avai > 0)
-                {
-                    Button cancel = new Button() { Text = " Cancel ", Location = new Point(50, 90) };
-                    cancel.Click += (s, args) => castleform.Close();
-                    castleform.Controls.Add(cancel);
-                    castleform.Show();
-                }
-            }
-            else
-            {
-                if (iskingmove[1]) { castle[1, 0] = false; castle[1, 1] = false; }
-                if (Map_Chess[1, 0].ChessType == ChessEnum.Empty && Map_Chess[2, 0].ChessType == ChessEnum.Empty
-                    && Map_Chess[3, 0].ChessType == ChessEnum.Empty && !isrookmove[1, 0] && !iskingmove[1])
-                    castle[1, 0] = true;
-                else castle[1, 0] = false;
-                if (Map_Chess[5, 0].ChessType == ChessEnum.Empty && Map_Chess[6, 0].ChessType == ChessEnum.Empty
-                   && !isrookmove[1, 1])
-                    castle[1, 1] = true;
-                else castle[1, 1] = false;
-                if (castle[1, 0])
-                {
-                    avai++;
-                    Button shortcastle = new Button() { Text = " You can Long Castle ", Width = 150, Location = new Point(30, 30) };
-                    shortcastle.Click += doshortcastle;
-                    shortcastle.MouseClick += (s, args) => castleform.Close();
-                    castleform.Controls.Add(shortcastle);
-                }
-                if (castle[1, 1])
-                {
-                    avai++;
-                    Button longcastle = new Button() { Text = " You can Short Castle ", Width = 150, Location = new Point(30, 60) };
-                    longcastle.Click += dolongcastle;
-                    longcastle.MouseClick += (s, args) => castleform.Close();
-                    castleform.Controls.Add(longcastle);
-                }
-                if (avai > 0)
-                {
-                    Button cancel = new Button() { Text = " Cancel ", Location = new Point(50, 90) };
-                    cancel.Click += (s, args) => castleform.Close();
-                    castleform.Controls.Add(cancel);
-                    castleform.Show();
-                }
-            }
-        }
-        public void doshortcastle(object sender, EventArgs e)
-        {
-            if (round == ChessColor.White)
-            {
-
-                PictureBox Pic = LoadPic(ChessColor.White, ChessEnum.King, new Point(6 * ChessEdge, 7 * ChessEdge));
-                Map_Chess[6, 7] = new PieceClass.King(ChessColor.White);
-                ChessBoard.Controls.Add(Pic);
-                listchess.Add(Pic);
-                Pic.BringToFront();
-
-                Point test = new Point(5 * ChessEdge, 7 * ChessEdge);
-                foreach (PictureBox pic in listchess)
-                {
-                    pic.GetChildAtPoint(test); 
-                }
-                ChessBoard.Controls.Remove(listchess[28]);
-                listchess.RemoveAt(28);
-                Map_Chess[4, 7] = new PieceClass.None();
-                
-
-                Pic = LoadPic(ChessColor.White, ChessEnum.Rook, new Point(5 * ChessEdge, 7 * ChessEdge));
-                Map_Chess[5, 7] = new PieceClass.Rook(ChessColor.White);
-                ChessBoard.Controls.Add(Pic);
-                listchess.Add(Pic);
-                Pic.BringToFront();
-
-                //ChessBoard.Controls.Remove(listchess[30]);
-                //listchess.RemoveAt(30);
-                //Map_Chess[7, 7] = new PieceClass.None();
-
-                ////Map_Chess[7, 7] = new PieceClass.None();
-
-                //Pic = LoadPic(ChessColor.White, ChessEnum.Rook, new Point(7 * ChessEdge, 7 * ChessEdge), false);
-                //Pic.Visible = false;
-                //Pic.Dispose();
-                //ChessBoard.Controls.Remove(Pic);
-                //listchess.Remove(Pic);
-
-                foreach (PictureBox pic in listchess)
-                {
-                    if (pic.BackColor == canmove_color) pic.BackColor = DefaultColor;
-                }
-                foreach (PictureBox pic in listBackground)
-                {
-                    if (pic.BackColor == canmove_color) pic.BackColor = ((pic.Location.X / 57) + (pic.Location.Y / 57)) % 2 == 0 ? Color.Gray : Color.DarkGray;
-                }
-
-                round = round == ChessColor.Black ? ChessColor.White : ChessColor.Black;
-                Movehistory.Text += "White : O-O \n";
-
-
-            }
-            else
-            {
-                Map_Chess[6, 0] = new PieceClass.King(ChessColor.White);
-                Map_Chess[4, 0] = new PieceClass.None();
-                Map_Chess[5, 0] = new PieceClass.Rook(ChessColor.White);
-                Map_Chess[7, 0] = new PieceClass.None();
-                Movehistory.Text += "Black : O-O \n";
-            }
-
-        }
-        public void dolongcastle(object sender, EventArgs e)
-        {
-
-        }
     }
 }

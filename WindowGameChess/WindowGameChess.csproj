@@ -57,6 +57,7 @@
     <Compile Include="Class\ChessPosition.cs" />
     <Compile Include="Class\Enumorators.cs" />
     <Compile Include="Class\PieceClass\Bishop.cs" />
+    <Compile Include="Class\PieceClass\InterfaceKnight.cs" />
     <Compile Include="Class\PieceClass\King.cs" />
     <Compile Include="Class\PieceClass\Knight.cs" />
     <Compile Include="Class\PieceClass\None.cs" />

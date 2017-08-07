@@ -12,13 +12,6 @@ namespace WindowGameChess.Class.PieceClass
         {
             base.ChessType = ChessEnum.King;
             base.Color = color;
-            //this.canCastle = true;
-        }
-        public King(ChessColor color, bool castle)
-        {
-            base.ChessType = ChessEnum.King;
-            base.Color = color;
-            //this.canCastle = castle;
         }
 
         public override List<ChessPosition> ListCanMove(ChessPosition pos_start, ChessPiece[,] Map_Chess)
@@ -98,23 +91,6 @@ namespace WindowGameChess.Class.PieceClass
             }
             return list;
         }
-        //public override List<ChessPosition> CalculateMoves()
-        //{
-        //    availableMoves = new List<ChessPosition>();
-        //    GetMovementArray(1, Direction.FORWARD);
-        //    GetMovementArray(1, Direction.BACKWARD);
-        //    GetMovementArray(1, Direction.LEFT);
-        //    GetMovementArray(1, Direction.RIGHT);
-        //    GetDiagnalMovementArray(1, DiagnalDirection.FORWARD_LEFT);
-        //    GetDiagnalMovementArray(1, DiagnalDirection.FORWARD_RIGHT);
-        //    GetDiagnalMovementArray(1, DiagnalDirection.BACKWARD_LEFT);
-        //    GetDiagnalMovementArray(1, DiagnalDirection.BACKWARD_RIGHT);
-        //    if (this.canCastle)
-        //    {
-        //        availableMoves.Add(new ChessPosition() { X = 2, Y = 0 });
-        //        availableMoves.Add(new ChessPosition() { X = -2, Y = 0 });
-        //    }
-        //    return availableMoves;
-        //}
+
     }
 }

@@ -9,14 +9,7 @@ namespace WindowGameChess.Class
 {
     public abstract class ChessPiece
     {
-        protected List<ChessPosition> availableMoves;
-        public List<ChessPosition> AvailableMoves
-        {
-            get { return availableMoves; }
-            set { availableMoves = value; }
-        }
-        protected List<ChessPosition> availableAttack;
-
+        #region properties
         protected ChessEnum chessType = ChessEnum.Empty;
         public ChessEnum ChessType
         {
@@ -37,30 +30,14 @@ namespace WindowGameChess.Class
             get { return indexControl; }
             set { indexControl = value; }
         }
+        #endregion
 
-        //protected bool canCastle;
-        //public bool CanCastle
-        //{
-        //    get { return canCastle; }
-        //    set { canCastle = value; }
-        //}
-
-        #region method
+        #region method for moving
         public static int[,] maps_diagonal = new int[4, 2] { { -1, -1 }, { -1, 1 }, { 1, -1 }, { 1, 1 } };
         public static int[] maps_vertical_n_horizontal = new int[2] { +1, -1 };
-        public static int[,] maps_knight = new int[8, 2] { { -2, +1 }, { -2, -1 }, { +2, +1 }, { +2, -1 }, { +1, -2 }, { -1, -2 }, { +1, +2 }, { -1, +2 } };
 
         public abstract List<ChessPosition> ListCanMove(ChessPosition pos_start, ChessPiece[,] Map_Chess);
-        //{
-        //    List<ChessPosition> list = new List<ChessPosition>();
-        //    list.AddRange(diagonal(pos_start, Map_Chess));
-        //    list.AddRange(vertical(pos_start, Map_Chess));
-        //    list.AddRange(horizontal(pos_start, Map_Chess));
-        //    list.AddRange(knight(pos_start, Map_Chess));
-        //    return list;
-
-        //}
-
+ 
         protected virtual List<ChessPosition> Diagonal(ChessPosition pos_start, ChessPiece[,] Map_Chess)
         {
             List<ChessPosition> List = new List<ChessPosition>();
@@ -73,7 +50,7 @@ namespace WindowGameChess.Class
                 int _y = maps_diagonal[val, 1];
                 while (pos_start.X + _x >= 0 && pos_start.X + _x <= 7 && pos_start.Y + _y >= 0 && pos_start.Y + _y <= 7)
                 {
-                    if (Map_Chess[pos_start.X + _x, pos_start.Y + _y].Color == color) break;// if ally -> can't move
+                    if (Map_Chess[pos_start.X + _x, pos_start.Y + _y].Color == color) break; // if ally -> can't move
                     else
                     {
                         List.Add(new ChessPosition() { X = pos_start.X + _x, Y = pos_start.Y + _y });

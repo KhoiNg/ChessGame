@@ -8,6 +8,8 @@ namespace WindowGameChess.Class.PieceClass
 {
     public class Knight : ChessPiece
     {
+        public static int[,] maps_knight = new int[8, 2] { { -2, +1 }, { -2, -1 }, { +2, +1 }, { +2, -1 }, { +1, -2 }, { -1, -2 }, { +1, +2 }, { -1, +2 } };
+
         public Knight(ChessColor color)
         {
             base.ChessType = ChessEnum.Knight;
@@ -31,7 +33,7 @@ namespace WindowGameChess.Class.PieceClass
             {
                 int _x = pos_start.X + maps_knight[val, 0];
                 int _y = pos_start.Y + maps_knight[val, 1];
-                if (_x < 0 | _x > 7 | _y < 0 | _y > 7) continue;//outside 
+                if (_x < 0 | _x > 7 | _y < 0 | _y > 7) continue; //outside 
                 if (Map_Chess[_x, _y].Color == color) continue; // if ally -> can't move
                 else list.Add(new ChessPosition() { X = _x, Y = _y });
             }

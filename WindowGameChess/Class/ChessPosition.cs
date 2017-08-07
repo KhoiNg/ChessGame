@@ -20,14 +20,5 @@ namespace WindowGameChess.Class
             get { return y; }
             set { y = value; }
         }
-
-        private bool eat = false; 
-        public bool Eat
-        {
-            get { return eat; }
-            set { eat = value; }
-        }
-
-
     }
 }

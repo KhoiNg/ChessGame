@@ -38,11 +38,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelPosition = new System.Windows.Forms.Panel();
+            this.RichTextBoxDie = new System.Windows.Forms.RichTextBox();
             this.RichTextBoxMove = new System.Windows.Forms.RichTextBox();
             this.panelPicture = new System.Windows.Forms.Panel();
+            this.pictureTheme = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funtionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.disableTimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,20 +81,18 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.disableTimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RichTextBoxDie = new System.Windows.Forms.RichTextBox();
             this.PictureChess = new System.Windows.Forms.PictureBox();
-            this.pictureTheme = new System.Windows.Forms.PictureBox();
             this.panelOther.SuspendLayout();
             this.panelPosition.SuspendLayout();
             this.panelPicture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTheme)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureChess)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTheme)).BeginInit();
             this.SuspendLayout();
             // 
             // panelOther
             // 
+            this.panelOther.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelOther.Controls.Add(this.richTextBox1);
             this.panelOther.Controls.Add(this.richTextBox2);
             this.panelOther.Controls.Add(this.RichTextBoxTurn);
@@ -105,7 +106,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(17, 73);
+            this.richTextBox1.Location = new System.Drawing.Point(64, 69);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -115,7 +116,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(17, 124);
+            this.richTextBox2.Location = new System.Drawing.Point(64, 120);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
             this.richTextBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -125,7 +126,7 @@
             // 
             // RichTextBoxTurn
             // 
-            this.RichTextBoxTurn.Location = new System.Drawing.Point(17, 29);
+            this.RichTextBoxTurn.Location = new System.Drawing.Point(64, 25);
             this.RichTextBoxTurn.Name = "RichTextBoxTurn";
             this.RichTextBoxTurn.ReadOnly = true;
             this.RichTextBoxTurn.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -137,7 +138,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 9);
+            this.label3.Location = new System.Drawing.Point(61, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 16);
             this.label3.TabIndex = 5;
@@ -147,7 +148,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 105);
+            this.label2.Location = new System.Drawing.Point(64, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 16);
             this.label2.TabIndex = 4;
@@ -157,7 +158,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 54);
+            this.label1.Location = new System.Drawing.Point(64, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 16);
             this.label1.TabIndex = 3;
@@ -165,12 +166,23 @@
             // 
             // panelPosition
             // 
+            this.panelPosition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPosition.Controls.Add(this.RichTextBoxDie);
             this.panelPosition.Controls.Add(this.RichTextBoxMove);
+            this.panelPosition.ForeColor = System.Drawing.SystemColors.Control;
             this.panelPosition.Location = new System.Drawing.Point(616, 211);
             this.panelPosition.Name = "panelPosition";
             this.panelPosition.Size = new System.Drawing.Size(237, 194);
             this.panelPosition.TabIndex = 2;
+            // 
+            // RichTextBoxDie
+            // 
+            this.RichTextBoxDie.Location = new System.Drawing.Point(4, 97);
+            this.RichTextBoxDie.Name = "RichTextBoxDie";
+            this.RichTextBoxDie.ReadOnly = true;
+            this.RichTextBoxDie.Size = new System.Drawing.Size(229, 94);
+            this.RichTextBoxDie.TabIndex = 1;
+            this.RichTextBoxDie.Text = "";
             // 
             // RichTextBoxMove
             // 
@@ -188,6 +200,16 @@
             this.panelPicture.Name = "panelPicture";
             this.panelPicture.Size = new System.Drawing.Size(236, 136);
             this.panelPicture.TabIndex = 3;
+            // 
+            // pictureTheme
+            // 
+            this.pictureTheme.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureTheme.BackgroundImage")));
+            this.pictureTheme.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureTheme.Location = new System.Drawing.Point(4, 3);
+            this.pictureTheme.Name = "pictureTheme";
+            this.pictureTheme.Size = new System.Drawing.Size(229, 130);
+            this.pictureTheme.TabIndex = 0;
+            this.pictureTheme.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -217,6 +239,13 @@
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
+            // disableTimerToolStripMenuItem
+            // 
+            this.disableTimerToolStripMenuItem.Name = "disableTimerToolStripMenuItem";
+            this.disableTimerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.disableTimerToolStripMenuItem.Text = "Disable Timer";
+            this.disableTimerToolStripMenuItem.Click += new System.EventHandler(this.disableTimerToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -229,6 +258,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // label4
             // 
@@ -556,22 +586,6 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // disableTimerToolStripMenuItem
-            // 
-            this.disableTimerToolStripMenuItem.Name = "disableTimerToolStripMenuItem";
-            this.disableTimerToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.disableTimerToolStripMenuItem.Text = "Disable Timer";
-            this.disableTimerToolStripMenuItem.Click += new System.EventHandler(this.disableTimerToolStripMenuItem_Click);
-            // 
-            // RichTextBoxDie
-            // 
-            this.RichTextBoxDie.Location = new System.Drawing.Point(4, 97);
-            this.RichTextBoxDie.Name = "RichTextBoxDie";
-            this.RichTextBoxDie.ReadOnly = true;
-            this.RichTextBoxDie.Size = new System.Drawing.Size(229, 94);
-            this.RichTextBoxDie.TabIndex = 1;
-            this.RichTextBoxDie.Text = "";
-            // 
             // PictureChess
             // 
             this.PictureChess.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -580,16 +594,6 @@
             this.PictureChess.Size = new System.Drawing.Size(457, 456);
             this.PictureChess.TabIndex = 4;
             this.PictureChess.TabStop = false;
-            // 
-            // pictureTheme
-            // 
-            this.pictureTheme.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureTheme.BackgroundImage")));
-            this.pictureTheme.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureTheme.Location = new System.Drawing.Point(4, 3);
-            this.pictureTheme.Name = "pictureTheme";
-            this.pictureTheme.Size = new System.Drawing.Size(229, 130);
-            this.pictureTheme.TabIndex = 0;
-            this.pictureTheme.TabStop = false;
             // 
             // FormChess
             // 
@@ -641,10 +645,10 @@
             this.panelOther.PerformLayout();
             this.panelPosition.ResumeLayout(false);
             this.panelPicture.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureTheme)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureChess)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureTheme)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

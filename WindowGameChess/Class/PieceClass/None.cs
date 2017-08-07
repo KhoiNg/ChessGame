@@ -13,6 +13,14 @@ namespace WindowGameChess.Class.PieceClass
             base.ChessType = ChessEnum.Empty;
             base.Color = ChessColor.Die;
         }
+
+        public None (int indexer)
+        {
+            base.ChessType = ChessEnum.Empty;
+            base.Color = ChessColor.Die;
+            base.IndexControl = indexer;
+        }
+
         public override List<ChessPosition> ListCanMove(ChessPosition pos_start, ChessPiece[,] Map_Chess)
         {
             List<ChessPosition> list = new List<ChessPosition>();

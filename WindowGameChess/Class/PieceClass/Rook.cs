@@ -12,14 +12,7 @@ namespace WindowGameChess.Class.PieceClass
         {
             base.ChessType = ChessEnum.Rook;
             base.Color = color;
-            //this.canCastle = true;
         }
-        //public Rook(ChessColor color, bool castle)
-        //{
-        //    base.ChessType = ChessEnum.Rook;
-        //    base.Color = color;
-        //    this.canCastle = castle;
-        //}
 
         public override List<ChessPosition> ListCanMove(ChessPosition pos_start, ChessPiece[,] Map_Chess)
         {

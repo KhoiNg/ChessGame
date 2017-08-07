@@ -14,19 +14,23 @@ namespace WindowGameChess
     {
         #region Properties
         Class.ChessBoardManager ChessBoard;
-        Class.ChessPiece[,] Map_Chess = new Class.ChessPiece[8, 8];
 
         #endregion
+
         public FormChess()
         {
             InitializeComponent();
-
             ChessBoard = new Class.ChessBoardManager(PictureChess,RichTextBoxTurn,RichTextBoxMove,RichTextBoxDie);
             ChessBoard.DrawChessBoard();
             ChessBoard.CreateMapChessPosition();
             ChessBoard.playerturn();
             richTextBox1.Text = "30:00";
             richTextBox2.Text = "30:00";
+            RichTextBoxDie.Text = "Player 1 Death Piece \n";
+            RichTextBoxDie.Text += "Pawn : 0, Rook : 0, Knight : 0, Bishop : 0 ,Queen : 0 \n";
+            RichTextBoxDie.Text += "Player 2 Death Piece \n";
+            RichTextBoxDie.Text += "Pawn : 0, Rook : 0, Knight : 0, Bishop : 0 ,Queen : 0 \n";
+
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,9 +47,14 @@ namespace WindowGameChess
             MessageBox.Show(" It is a draw game ");
             Application.Exit();
         }
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("It is a 2-player Chess Game", "Made By Khoi . Enjoy! ");
+        }
 
-        int OrigTime1 = 1800;
-        int OrigTime2 = 1800;
+        #region Timer
+        static int OrigTime1 = 1800;
+        static int OrigTime2 = 1800;
         private void timer_Tick(object sender, EventArgs e)
         {
             if (ChessBoard.round == Class.ChessColor.White)
@@ -58,6 +67,7 @@ namespace WindowGameChess
                 OrigTime2--;
                 richTextBox2.Text = OrigTime2 / 60 + ":" + ((OrigTime2 % 60) >= 10 ? (OrigTime2 % 60).ToString() : "0" + OrigTime2 % 60);
             }
+
             if (OrigTime1 == 0)
             {
                 MessageBox.Show("Player 1 lose.");
@@ -75,5 +85,7 @@ namespace WindowGameChess
         {
             timer.Stop();
         }
+        #endregion
+
     }
 }
